@@ -1,1 +1,92 @@
+
+// Include theming for Angular Material with `mat.theme()`.
+// This Sass mixin will define CSS variables that are used for styling Angular Material
+// components according to the Material 3 design spec.
+// Learn more about theming and how to use it for your application's
+// custom components at https://material.angular.dev/guide/theming
+@use '@angular/material' as mat;
+
+html {
+  @include mat.theme((
+    color: (
+      primary: mat.$azure-palette,
+      tertiary: mat.$blue-palette,
+    ),
+    typography: Roboto,
+    density: 0,
+  ));
+}
+
+body {
+  // Default the application to a light color theme. This can be changed to
+  // `dark` to enable the dark color theme, or to `light dark` to defer to the
+  // user's system settings.
+  color-scheme: light;
+
+  // Set a default background, font and text colors for the application using
+  // Angular Material's system-level CSS variables. Learn more about these
+  // variables at https://material.angular.dev/guide/system-variables
+  background-color: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+  font: var(--mat-sys-body-medium);
+
+  // Reset the user agent margin.
+  margin: 0;
+}
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
+.toast-success .mdc-snackbar__surface { background: #16a34a !important; color: #fff !important; }
+.toast-error   .mdc-snackbar__surface { background: #dc2626 !important; color: #fff !important; }
+}
+/* ===== FOND IDENTIQUE PARTOUT ===== */
+html, body {
+  height: 100%;
+  margin: 0;
+  background: #F5F7FB;        /* 💠 même couleur de fond pour login + register */
+}
+
+/* ===== CENTRER LES DEUX VARIANTS DE WRAPPER =====
+   (tu as montré .auth-wrapper et .auth-wrap ; on gère les deux) */
+.auth-wrapper,
+.auth-wrap {
+  min-height: 100vh;          /* plein écran */
+  display: grid;
+  place-items: center;        /* centre horizontal + vertical */
+  padding: 0;                 /* pas de poussée vers le bas */
+}
+
+/* Si tu as un header fixe (~120px), ajoute "has-header" sur le body ou le container */
+.has-header .auth-wrapper,
+.has-header .auth-wrap {
+  min-height: calc(100vh - 120px);
+}
+
+/* ===== CARTE (même style pour les deux pages) ===== */
+.auth-card {
+  width: 100%;
+  max-width: 560px;
+  padding: 28px 28px 20px;
+  border-radius: 20px;
+  background: #FFFFFF;
+  border: 1px solid #EEF1F6;
+  box-shadow: 0 12px 28px rgba(16,24,40,.12);
+  overflow: hidden;
+  box-sizing: border-box;
+  margin: 0 auto;             /* sécurité si un style l’aligne à gauche */
+}
+
+/* ===== FORM & BOUTON (option, identiques sur les deux) ===== */
+.form { display: grid; gap: 14px; }
+.btn  { width: 100%; height: 44px; border-radius: 10px; font-weight: 600; }
+.muted{ text-align: center; margin-top: 12px; color: #6b7280; }
+
+/* ===== ALERTES (inchangé) ===== */
+.alert {
+  position: relative; padding: 12px 36px 12px 12px;
+  border-radius: 10px; font-size: 14px; margin-bottom: 12px;
+  &.success { background:#e6f6ea; color:#0f6b2b; border:1px solid #bee6c7; }
+  &.error   { background:#fdeaea; color:#8b1d18; border:1px solid #f7c1c1; }
+  .x { position:absolute; right:8px; top:6px; border:0; background:transparent; font-size:18px; cursor:pointer; line-height:1; }
+}

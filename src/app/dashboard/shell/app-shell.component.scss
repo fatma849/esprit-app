@@ -1,0 +1,293 @@
+:host {
+  display: block;
+  height: 100vh;
+}
+
+/* ===== Layout de base ===== */
+.layout {
+  display: flex;
+  height: 100%;
+  background: #f6f7fb;               /* même fond que le login */
+  color: #111827;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ===== Sidebar ===== */
+.sidebar {
+  width: 240px;
+  background: #ffffff;               /* panneau blanc clair */
+  border-right: 1px solid #e5e7eb;
+  padding: 14px 10px;
+  color: #111827;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px 14px;
+  border-bottom: 1px dashed #e5e7eb;
+}
+
+.brand img {
+  height: 26px;
+  filter: brightness(1);
+}
+
+.section-title {
+  margin: 16px 10px 8px;
+  font-size: 11px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #6b7280;
+  font-weight: 900;                     /* gris doux */
+}
+
+/* ===== Items du menu ===== */
+.item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  margin: 2px 6px;
+  border-radius: 8px;
+  color: #111827;
+  text-decoration: none;
+  transition: .15s ease background, .15s ease color, .15s ease border-color;
+  border: 1px solid transparent;
+}
+
+.item mat-icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+  color: #6b7280;
+}
+
+.item:hover {
+  background: #f3f4f6;               /* hover doux */
+}
+
+.item.active {
+  background: #4f46e5;               /* indigo du bouton login */
+  color: #ffffff;
+  border-color: #4f46e5;
+  font-weight: 600;
+}
+
+.item.active mat-icon {
+  color: #ffffff;
+}
+
+/* accessibilité focus clavier */
+.item:focus-visible {
+  outline: 2px solid #6366f1;
+  outline-offset: 2px;
+}
+
+/* ===== Contenu principal ===== */
+.content {
+  flex: 1;
+  padding: 28px;
+  overflow: auto;
+}
+
+/* ===== Carte formulaire ===== */
+.card {
+  max-width: 980px;
+  margin: 36px auto;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 10px 28px rgba(16, 24, 40, .08);
+  padding: 22px 26px 26px;
+  border: 1px solid #e5e7eb;
+}
+
+/* ===== Grille des champs ===== */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 20px;
+}
+
+/* Titres + labels uppercase */
+h2.title {
+  margin: 0 0 14px;
+  color: #111827;
+}
+
+.upper {
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+/* ===== Boutons ===== */
+.actions {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+/* ===== Champs Material ===== */
+::ng-deep .mat-mdc-form-field {
+  --mdc-shape-small: 8px;
+}
+
+::ng-deep .mdc-text-field--filled {
+  --mdc-filled-text-field-container-color: #fff;
+  --mdc-filled-text-field-focus-active-indicator-color: #4f46e5;
+  --mdc-filled-text-field-hover-active-indicator-color: #c7cbe6;
+}
+
+/* ===== Message résultat ===== */
+.result {
+  margin-top: 10px;
+  font-weight: 600;
+  color: #4f46e5;
+}
+/* ===== Bandeau bleu fin sur toute la largeur ===== */
+.brandband{
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 10px;                 /* ajuste 8–12px si tu veux */
+  background: #0b2a63;          /* bleu nuit */
+  z-index: 1;
+}
+
+/* le contenu garde le padding pour la page, mais pas la topbar */
+.content{ padding: 0 28px 28px; }
+
+/* on étire la topbar pour compenser le padding horizontal de .content */
+.topbar{
+  height:56px;
+  position: sticky; top:0; z-index:3;
+  background:#fff;
+  display:flex; align-items:center; justify-content:space-between;
+
+  /* étend la barre jusqu’aux bords du panneau droit */
+  margin: 0 -28px;          /* <— enlève l’encadrement blanc */
+  padding: 0 28px;          /* <— remet l’air interne */
+  box-shadow: 0 1px 0 rgba(16,24,40,.06);
+  border:0;
+}
+
+/* la zone logo reste alignée à 56px, sans bordure */
+.sidebar .brand{
+  height:56px; border-bottom:none;
+}
+/* Bande bleue tout en haut */
+.brandband{
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 10px;                  /* épaisseur de la bande */
+  background: #0b2a63;           /* bleu nuit */
+  z-index: 1000;
+}
+
+/* Décale toute l’app de la hauteur de la bande → la bleue reste visible */
+.layout{ position: relative; padding-top: 10px; }  /* <= EXACTEMENT 10px */
+
+/* Barre blanche à ras, sans LIGNE ni OMBRE */
+.topbar{
+  height:56px;
+  position: sticky; top: 0; z-index: 999;
+  background:#fff;
+  display:flex; align-items:center; justify-content: space-between;
+
+  /* la topbar occupe toute la largeur malgré le padding du .content */
+  margin: 0 -28px;               /* 28 = ton padding horizontal de .content */
+  padding: 0 28px;
+
+  border: 0;
+  box-shadow: none;              /* supprime la “ligne” optique */
+}
+
+/* Zone logo alignée, sans bordure */
+.sidebar .brand{
+  height:56px; border-bottom: none;
+}
+
+/* Le bouton cloche sans cadre */
+.topbar .mat-mdc-icon-button{
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 8px;
+}
+.topbar .mat-mdc-icon-button:hover{ background:#f3f4f6 !important; }
+
+/* ===== Bande NOIRE tout en haut ===== */
+:root{ --band-h: 10px; }           /* épaisseur de la bande (change si besoin) */
+
+.brandband{
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--band-h);
+  background: #000;                /* noir */
+  z-index: 1000;
+}
+
+/* décale toute l'app de la hauteur de la bande */
+.layout{ position: relative; padding-top: var(--band-h); }
+
+/* barre blanche sans ligne/ombre qui touche les bords du panneau droit */
+.topbar{
+  height:56px; position: sticky; top:0; z-index: 3;
+  background:#fff;
+  display:flex; align-items:center; justify-content:space-between;
+
+  /* ta .content a padding: 0 28px 28px → on compense */
+  margin: 0 -28px; 
+  padding: 0 28px;
+
+  border:0; box-shadow:none;
+}
+
+/* zone logo alignée, tout blanc, sans bordure */
+.sidebar .brand{
+  height:56px; border-bottom:none; background:#fff;
+}
+
+/* topbar reste blanche et plate (garde tes règles existantes) */
+
+/* User compact = petite image + nom + chevron */
+.user-compact{
+  all: unset;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;                 /* rapproché comme sur ta maquette */
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 8px;
+  background: transparent;
+}
+.user-compact:hover{ background: #f3f4f6; }  /* optionnel */
+
+.uc-avatar{
+  width: 20px;              /* PETITE image */
+  height: 20px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex: 0 0 20px;
+}
+.uc-avatar img{
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+
+.uc-name{
+  font-size: 13px;          /* comme l’exemple */
+  color: #111827;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.uc-chevron{
+  font-size: 18px;
+  color: #6b7280;
+  transform: translateY(1px);  /* alignement optique */
+}
+
+/* Supprimer toute trace de la cloche (au cas où) */
+.icon-plain, [mat-icon-button]{ display: none !important; }

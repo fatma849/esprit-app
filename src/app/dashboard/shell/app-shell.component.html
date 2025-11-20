@@ -1,0 +1,111 @@
+<!-- src/app/dashboard/shell/app-shell.component.html -->
+<div class="layout">
+  <!-- (enlève cette ligne si tu ne veux pas la bande) -->
+  <!-- <div class="brandband" aria-hidden="true"></div> -->
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+   <div class="brand">
+  <img src="assets/branding/log.png" alt="Logo Esprit" style="height: 70px;">
+</div>
+
+    <nav class="nav">
+      <a routerLink="/app" routerLinkActive="active" class="item" [routerLinkActiveOptions]="{ exact:true }">
+        <mat-icon>home</mat-icon><span>Accueil</span>
+      </a>
+      <div class="section-title">DASHBOARDS</div>
+      <a routerLink="/app/dash1" routerLinkActive="active" class="item">
+  <mat-icon>grid_view</mat-icon>
+  <span class="dot"></span>
+  <span>Analyse Des Inscriptions</span>
+</a>
+
+<a routerLink="/app/dash2" routerLinkActive="active" class="item">
+  <mat-icon>bar_chart</mat-icon>
+  <span class="dot"></span>
+  <span>Gestion Financière</span>
+</a>
+
+<a routerLink="/app/dash3" routerLinkActive="active" class="item">
+  <mat-icon>pie_chart</mat-icon>
+  <span class="dot"></span>
+  <span>Paiements Retard</span>
+</a>
+
+<a routerLink="/app/dash4" routerLinkActive="active" class="item">
+  <mat-icon>table_view</mat-icon>
+  <span class="dot"></span>
+  <span>Performance Académique</span>
+</a>
+
+<a routerLink="/app/dash5" routerLinkActive="active" class="item">
+  <mat-icon>public</mat-icon>
+  <span class="dot"></span>
+  <span>Mobilité Internationale</span>
+</a>
+
+<a routerLink="/app/dash6" routerLinkActive="active" class="item">
+  <mat-icon>paid</mat-icon>
+  <span class="dot"></span>
+  <span>Financement Mobilité</span>
+</a>
+
+<a routerLink="/app/dash7" routerLinkActive="active" class="item">
+  <mat-icon>how_to_reg</mat-icon>
+  <span class="dot"></span>
+  <span>Processus Admission</span>
+</a>
+
+<a routerLink="/app/dash8" routerLinkActive="active" class="item">
+  <mat-icon>replay</mat-icon>
+  <span class="dot"></span>
+  <span>Rebond Admission</span>
+</a>
+
+
+      <div class="section-title">MACHINE LEARNING</div>
+      <a routerLink="/app/ml/forecast" routerLinkActive="active" class="item">
+        <mat-icon>trending_up</mat-icon><span>Succès de mobilité</span>
+      </a>
+      
+     <a routerLink="/app/ml/lstm-predict" routerLinkActive="active" class="item">
+  <mat-icon>paid</mat-icon>
+  <span>Prévision Frais</span>
+</a>
+
+<a routerLink="/app/ml/sarima_nbinsc" routerLinkActive="active" class="item">
+  <mat-icon>how_to_reg</mat-icon>
+  <span>Prévision Inscriptions</span>
+</a>
+
+
+    </nav>
+  </aside>
+
+  <!-- Contenu -->
+  <main class="content">
+    <!-- BARRE BLANCHE TOUT EN HAUT -->
+    <header class="topbar">
+  <div class="topbar__left"></div>
+
+  <div class="topbar__right">
+    <!-- PAS de bouton notif ici -->
+
+    <!-- User compact -->
+    <button class="user-compact" aria-label="Compte utilisateur">
+      <span class="uc-avatar">
+        <img src="assets/branding/H.png" alt="directeur_generale">
+      </span>
+      <span class="uc-name">directeur_general</span>
+      <mat-icon class="uc-chevron">expand_more</mat-icon>
+    </button>
+  </div>
+</header>
+
+
+    <!-- Zone page -->
+    <section class="page">
+      <router-outlet></router-outlet>
+    </section>
+  </main>
+</div>

@@ -1,0 +1,17 @@
+<mat-sidenav-container class="shell">
+  <mat-sidenav mode="side" opened>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/ml/predict-return" routerLinkActive="active">Prédire rendement</a>
+      <a mat-list-item routerLink="/ml/classify-company" routerLinkActive="active">Classifier société</a>
+      <a mat-list-item routerLink="/ml/predict-plusvalue" routerLinkActive="active">Prédire plus-value</a>
+      <a mat-list-item routerLink="/ml/predict-invest" routerLinkActive="active">Prédire investissement</a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">Machine Learning</mat-toolbar>
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

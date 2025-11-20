@@ -1,0 +1,41 @@
+<div class="page">
+  <div class="card">
+    <h1>Prévoir le nombre d'inscriptions par spécialité</h1>
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <label>Spécialité</label>
+      <select formControlName="specialite" class="input">
+        <option value="" disabled>— Choisir une spécialité —</option>
+        <option *ngFor="let s of specialites" [value]="s">{{ s }}</option>
+      </select>
+
+      <!-- ICI: utiliser ['specialite'] au lieu de .specialite -->
+      <div class="hint"
+           *ngIf="form.controls['specialite']?.touched && form.controls['specialite']?.invalid">
+        * Spécialité requise
+      </div>
+
+      <label>Années futures (steps)</label>
+      <input formControlName="steps" type="number" min="1" max="10" class="input" />
+
+      <button class="btn" type="submit" [disabled]="loading">
+        {{ loading ? 'Prédiction...' : 'Prédire' }}
+      </button>
+    </form>
+
+    <div class="alert error" *ngIf="error">{{ error }}</div>
+
+    <div class="results" *ngIf="rows.length">
+      <h2>Résultats</h2>
+      <table>
+        <thead><tr><th>Année</th><th>Prévision</th></tr></thead>
+        <tbody>
+          <tr *ngFor="let r of rows">
+            <td>{{ r.year }}</td>
+            <td>{{ r.forecast  }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

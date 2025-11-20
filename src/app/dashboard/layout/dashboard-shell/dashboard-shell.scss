@@ -1,0 +1,62 @@
+/* Fond global clair */
+:host{ display:block; min-height:100vh; background:#f6f7fb; color:#111827; }
+
+/* TOPBAR */
+.topbar{
+  position: sticky; top:0; z-index:20;
+  height:56px; padding:0 16px;
+  background:#fff; border-bottom:1px solid #e5e7eb;
+  display:flex; align-items:center;
+}
+.brand{ display:flex; align-items:center; gap:8px; font-weight:800; letter-spacing:.02em; color:#111827; }
+.brand img{ height:22px; }
+.spacer{ flex:1 1 auto; }
+
+/* User chip à droite */
+.user-chip{ display:flex; align-items:center; gap:10px; }
+.avatar{
+  width:32px; height:32px; border-radius:50%; object-fit:cover;
+  background:#e0e7ff;
+}
+.avatar.initials{
+  display:inline-flex; align-items:center; justify-content:center;
+  color:#3730a3; font-weight:700; font-size:12px;
+}
+.user-meta{ display:flex; flex-direction:column; line-height:1.1; }
+.name{ font-size:13px; color:#111827; font-weight:700; }
+.role{
+  margin-top:2px; font-size:11px; color:#4b5563;
+  background:#eef2ff; border:1px solid #e0e7ff; padding:2px 6px; border-radius:999px;
+}
+
+/* Bouton logout (look bouton clair) */
+.logout{
+  margin-left:8px; text-decoration:none;
+  background:#fff; color:#4f46e5; border:1px solid #c7d2fe;
+  padding:6px 10px; border-radius:8px; font-weight:600;
+}
+.logout:hover{ background:#eef2ff; }
+
+/* LAYOUT */
+.wrap{ display:grid; grid-template-columns:270px 1fr; min-height:calc(100vh - 56px); }
+
+.sidebar{
+  background:transparent; padding:16px 12px;
+  border-right:1px solid #e5e7eb;
+}
+.section + .section{ margin-top:20px; }
+.title{ font-size:12px; letter-spacing:.6px; color:#6b7280; margin:6px 8px 10px; }
+
+/* Liens sidebar */
+.sidebar a{
+  display:flex; align-items:center; gap:10px;
+  padding:10px 12px; border-radius:10px; color:#111827; text-decoration:none;
+  background:transparent; border:1px solid transparent;
+  transition:background .15s,border-color .15s,color .15s;
+}
+.sidebar a:hover{ background:rgba(0,0,0,.03); }
+.sidebar a.active{ background:#4f46e5; border-color:#4f46e5; color:#fff; }
+.ico{ width:20px; text-align:center; }
+
+/* Contenu */
+.main{ padding:18px; background:transparent; }

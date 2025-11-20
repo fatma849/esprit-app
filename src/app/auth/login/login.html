@@ -1,0 +1,42 @@
+<div class="auth-wrap">
+  <mat-card class="auth-card">
+    <div class="brand">
+
+  <img src="assets/branding/log.png" alt="Logo Esprit" style="height: 50px;">
+   <div class="sub">Welcome Back!</div>
+    </div>
+
+    <div class="alert success" *ngIf="message">
+      <span>{{ message }}</span>
+      <button type="button" class="x" (click)="message=''">×</button>
+    </div>
+    <div class="alert error" *ngIf="error">
+      <span>{{ error }}</span>
+      <button type="button" class="x" (click)="error=''">×</button>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="submit()" class="form">
+      <mat-form-field appearance="outline" class="w">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w">
+        <mat-label>Mot de passe</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" />
+        <button mat-icon-button matSuffix type="button" (click)="hide=!hide" aria-label="Afficher/Masquer">
+          <mat-icon>{{ hide ? 'visibility' : 'visibility_off' }}</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" class="btn" [disabled]="form.invalid || loading">
+        {{ loading ? 'Connexion...' : 'Login' }}
+      </button>
+    </form>
+
+    <div class="muted">
+      Don’t have an account?
+      <a routerLink="/auth/register">Sign Up</a>
+    </div>
+  </mat-card>
+</div>

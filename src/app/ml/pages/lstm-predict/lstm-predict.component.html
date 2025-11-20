@@ -1,0 +1,26 @@
+<div class="page">
+  <h1>Prédiction de l’évolution des frais scolaires annuels</h1>
+
+  <div class="card">
+    <label>Historique (année:montant) </label>
+    <input type="text" [(ngModel)]="pairs" autocomplete="off" />
+
+    <label>Années à prévoir :</label>
+    <input type="number" [(ngModel)]="nYears" min="1" step="1" inputmode="numeric" />
+
+    <button (click)="submit()" [disabled]="busy">Prédire</button>
+  </div>
+
+  <div class="result" *ngIf="predictions">
+    <h2>Résultats</h2>
+    <div class="table">
+      <div class="row header"><div>Année</div><div>Montant prévu DNT</div></div>
+      <div class="row" *ngFor="let kv of (predictions | keyvalue)">
+        <div>{{ kv.key }}</div>
+        <div>{{ kv.value }}</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="error" *ngIf="error">{{ error }}</p>
+</div>

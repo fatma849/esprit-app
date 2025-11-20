@@ -1,0 +1,36 @@
+<form [formGroup]="form" (ngSubmit)="submit()" class="form">
+  <div class="row">
+    <label>Année cible <input type="number" formControlName="year" /></label>
+    <label>Inscrits (N-1) <input type="number" formControlName="nb_inscrits_lag1" /></label>
+  </div>
+  <div class="row">
+    <label>Mobilités <input type="number" formControlName="nb_mobilites" /></label>
+    <label>Partenaires <input type="number" formControlName="nb_partenaires" /></label>
+  </div>
+  <div class="row">
+    <label>Pays <input type="number" formControlName="nb_pays" /></label>
+    <label>Funding (€) <input type="number" step="0.01" formControlName="funding_sum" /></label>
+  </div>
+  <div class="actions">
+    <button type="submit" [disabled]="loading || form.invalid">Prédire</button>
+  </div>
+</form>
+
+<div *ngIf="error" class="alert error">⚠️ {{ error }}</div>
+<div *ngIf="loading" class="alert">Calcul…</div>
+
+<!-- CAS A: l’API renvoie { year, value } -->
+<div *ngIf="result as r" class="result-card">
+  <div class="value">{{ r.value | number:'1.0-0' }}</div>
+  <div class="hint">Inscrits prévus en {{ r.year }}</div>
+  <pre class="debug">{{ r | json }}</pre>
+</div>
+
+<!--
+CAS B: si ton API renvoie { target_year, prediction }, remplace le bloc ci-dessus par :
+<div *ngIf="result as r" class="result-card">
+  <div class="value">{{ r.prediction | number:'1.0-0' }}</div>
+  <div class="hint">Inscrits prévus en {{ r.target_year }}</div>
+  <pre class="debug">{{ r | json }}</pre>
+</div>
+-->

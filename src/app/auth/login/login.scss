@@ -1,0 +1,63 @@
+/* Assure la hauteur plein écran pour le centrage vertical */
+html, body { height: 100%; margin: 0; }
+
+/* ====== WRAPPER (centré) ====== */
+.auth-wrapper {
+  min-height: calc(100vh - 120px);   /* espace si tu as un header fixe de ~120px */
+  display: grid;
+  place-items: center;                /* centre horizontal + vertical */
+  padding-top: 0;                     /* ne pousse plus vers le bas */
+  background: #F5F7FB;               /* fond gris très clair */
+}
+
+/* ====== CARTE BLANCHE ====== */
+.auth-card {
+  width: 100%;
+  max-width: 560px;
+  padding: 28px 28px 20px;
+  border-radius: 20px;
+  background: #FFFFFF;
+  border: 1px solid #EEF1F6;
+  box-shadow: 0 12px 28px rgba(16,24,40,.12);
+  overflow: hidden;                   /* évite les débordements dans les coins */
+  box-sizing: border-box;
+  margin: 0 auto;                     /* sécurité si autre CSS aligne à gauche */
+}
+
+/* En-tête de la carte */
+.brand {
+  text-align: center;
+  margin-bottom: 16px;
+  img { height: 40px; }
+  .sub { margin-top: 8px; color:#6b7280; font-size:13px; }
+}
+
+/* Formulaire */
+.form { display: flex; flex-direction: column; gap: 14px; }
+.w { width: 100%; }
+
+.btn {
+  width: 100%;
+  height: 44px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.muted {
+  text-align: center;
+  margin-top: 12px;
+  color: #6b7280;
+  a { margin-left: 4px; text-decoration: none; }
+}
+
+/* Alertes */
+.alert {
+  position: relative;
+  padding: 12px 36px 12px 12px;
+  border-radius: 10px;
+  font-size: 14px;
+  margin-bottom: 12px;
+  &.success { background:#e6f6ea; color:#0f6b2b; border:1px solid #bee6c7; }
+  &.error   { background:#fdeaea; color:#8b1d18; border:1px solid #f7c1c1; }
+  .x { position:absolute; right:8px; top:6px; border:0; background:transparent; font-size:18px; cursor:pointer; line-height:1; }
+}

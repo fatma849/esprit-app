@@ -1,0 +1,68 @@
+<div class="auth-wrapper">
+  <mat-card class="auth-card">
+
+    <!-- Bandeau succès -->
+    <div class="alert success" *ngIf="message">
+      <span>{{ message }}</span>
+      <button mat-icon-button (click)="message=''" aria-label="Fermer">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+
+    <!-- Bandeau erreur -->
+    <div class="alert error" *ngIf="error">
+      <span>{{ error }}</span>
+      <button mat-icon-button (click)="error=''" aria-label="Fermer">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+
+ <div class="brand">
+  <img src="assets/branding/log.png" alt="Logo Esprit" style="height: 50px;">
+</div>
+    <p class="subtitle">Your Social Campaigns</p>
+
+    <form [formGroup]="form" (ngSubmit)="submit()" class="form">
+
+      <!-- RÔLE (liste fermée) -->
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Rôle*</mat-label>
+        <mat-select formControlName="role" required>
+          <mat-option *ngFor="let r of roles" [value]="r.value">
+            {{ r.label }}
+          </mat-option>
+        </mat-select>
+        <mat-hint>Choisissez votre rôle (ex. Directeur général)</mat-hint>
+        <mat-error *ngIf="form.get('role')?.hasError('required')">
+          Le rôle est obligatoire
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Email -->
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Email*</mat-label>
+        <input matInput type="email" formControlName="email" />
+      </mat-form-field>
+
+      <!-- Mot de passe -->
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Mot de passe*</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" />
+        <button mat-icon-button matSuffix type="button" (click)="hide = !hide" aria-label="Afficher/Masquer">
+          <mat-icon>{{ hide ? 'visibility' : 'visibility_off' }}</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <mat-checkbox formControlName="accept">J'accepte les conditions</mat-checkbox>
+
+      <button mat-raised-button color="primary" class="cta" [disabled]="form.invalid || loading">
+        {{ loading ? 'Création...' : 'Sign Up' }}
+      </button>
+
+      <div class="muted">
+        Déjà un compte ?
+        <a routerLink="/auth/login">Sign In</a>
+      </div>
+    </form>
+  </mat-card>
+</div>

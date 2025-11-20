@@ -1,0 +1,45 @@
+.auth-wrapper {
+  min-height: calc(100vh - 120px); /* laisse respirer sous le header */
+  display: grid;
+  place-items: center;              /* ✅ centre horizontal + vertical */
+  padding-top: 0;                   /* ✅ ne pousse plus vers le bas */
+  background: #F5F7FB;             /* fond gris très clair */
+}
+
+/* ====== CARTE BLANCHE ====== */
+.auth-card {
+  width: 100%;
+  max-width: 560px;
+  padding: 28px 28px 20px;
+  border-radius: 20px;
+  background: #FFFFFF;
+  border: 1px solid #EEF1F6;
+  box-shadow: 0 12px 28px rgba(16, 24, 40, .12);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.brand { text-align: center; margin: 6px 0 0; font-weight: 700; letter-spacing: .5px; }
+.subtitle { text-align: center; margin: 6px 0 18px; opacity: .75; font-size: 13px; }
+
+.form { display: grid; gap: 14px; }
+.w-100 { width: 100%; }
+
+.cta {
+  margin-top: 6px;
+  border-radius: 999px;
+  width: 100%;
+  height: 44px;
+  font-weight: 600;
+}
+
+.muted { text-align: center; margin-top: 10px; font-size: 13px; opacity: .8; }
+
+.alert {
+  display: flex; align-items: center; justify-content: space-between;
+  border-radius: 10px; padding: 10px 12px; margin-bottom: 12px;
+  border: 1px solid transparent; font-size: 13px; /* ✅ fix */
+  button { width: 28px; height: 28px; }
+}
+.alert.success { background: #e9f7ef; color: #1e7e34; border-color: #bde5c8; }
+.alert.error   { background: #fdecea; color: #c0392b; border-color: #f5c6cb; }
